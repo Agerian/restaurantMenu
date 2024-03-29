@@ -1,28 +1,41 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const { ApolloServer } = require('@apollo/server');
+const { expressMiddleware } = require('@apollo/server/express4');
+const path = require('path');
 require('dotenv').config();
 
-const MenuItem = require('./models/menuItems');
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
 
+const PORT = process.env.PORT || 3001;
 const app = express();
-const PORT = process.env.PORT || 3000;
-
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Error connecting to MongoDB', err));
-
-// Test Data Creation
-const testItem = new MenuItem({
-  name: 'Test Burger', 
-  description: 'Delicious burger with all the fixings',
-  price: 12.99,
-  category: 'Lunch & Dinner'
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
 });
 
-testItem.save()
-  .then(() => console.log('Test item saved!'))
-  .catch(err => console.error('Error saving item:', err));
+const startApolloServer = async () => {
+  await server.start();
 
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+  app.use(express.urlencoded({ extended: false }));
+  app.use(express.json());
+
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+    
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    });
+  }
+  
+  app.use('/graphql', expressMiddleware(server));
+
+  db.once('open', () => {
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}/graphql`);
+    });
+  });
+};
+
+startApolloServer();
