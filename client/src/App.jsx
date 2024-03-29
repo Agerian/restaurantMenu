@@ -1,24 +1,26 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { Outlet } from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
-import Menu from './components/Menu';
-import About from './components/About';
-import Contact from './components/Contact';
+import Footer from './components/Footer';
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
 
 function App() {
-
   return (
-    <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <div className="flex-column justify-flex-start min-100-vh">
+        <Header />
+        <div className="container">
+          <Outlet />
+        </div>
+        <Footer />
+      </div>
+    </ApolloProvider>
   );
 }
 
-export default App
+export default App;
