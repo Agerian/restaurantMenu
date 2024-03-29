@@ -21,7 +21,7 @@ type MenuItem {
 }
 
 type Query {
-    getMenuItemsByCategory(category: MenuItemCategory!): [MenuItem!]
+    getAllMenuItemsByCategory(category: MenuItemCategory!): [MenuItem!]
     getMenuItemById(_id: ID!): MenuItem
 }
 `;
