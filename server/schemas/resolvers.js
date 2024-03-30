@@ -2,6 +2,7 @@
 const { MenuItem } = require('../models');
 //if We add in the admin role we need to add JWT and Auth erre should be added to a .../utils/auth.js file if we do
 //will need to add more to the resolvers as we continue the project including mutations
+
 const resolvers = {
     Query: {
         //get all menu items by enum or category
@@ -28,7 +29,12 @@ const resolvers = {
     Mutation: {
         addMenuItem: async (parent, { input }) => {
             try {
-                const menuItem = await MenuItem.create({ input });
+                const menuItem = await MenuItem.create({
+                    name: input.name,
+                    description: input.description,
+                    price: input.price,
+                    category: input.category
+                });
                 return menuItem;
             } catch (err) {
                 console.log(err);
@@ -40,6 +46,7 @@ const resolvers = {
                 return menuItem;
             } catch (err) {
                 console.log(err);
+                throw new Error('Something went wrong');
             }
         },
         deleteMenuItem: async (parent, { _id }) => {
