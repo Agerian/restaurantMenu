@@ -20,9 +20,22 @@ type MenuItem {
     category: MenuItemCategory!
 }
 
+input MenuItemInput {
+    name: String!
+    description: String
+    price: Float!
+    category: MenuItemCategory!
+}
+
 type Query {
     getAllMenuItemsByCategory(category: MenuItemCategory!): [MenuItem!]
     getMenuItemById(_id: ID!): MenuItem
+}
+
+type Mutation {
+    addMenuItem(input: MenuItemInput!): MenuItem
+    updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
+    deleteMenuItem(_id: ID!): String
 }
 `;
 
