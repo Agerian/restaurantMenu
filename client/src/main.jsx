@@ -2,8 +2,8 @@ import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from './App.jsx';
 import Home from './pages/Home';
-import Menu from './pages/Menu';
-import About from './pages/About';
+import Menu from './pages/MenuPage';
+import About from './pages/AboutUs';
 import Contact from './pages/Contact';
 import Error from './pages/Error';
 
