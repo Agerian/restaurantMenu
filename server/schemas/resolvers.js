@@ -22,7 +22,38 @@ const resolvers = {
                 console.log(err);
             }
         }
+    },
+
+    //add mutations here
+    Mutation: {
+        addMenuItem: async (parent, { input }) => {
+            try {
+                const menuItem = await MenuItem.create({ input });
+                return menuItem;
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        updateMenuItem: async (parent, { _id, input }) => {
+            try {
+                const menuItem = await MenuItem.findByIdAndUpdate(_id, input, { new: true });
+                return menuItem;
+            } catch (err) {
+                console.log(err);
+            }
+        },
+        deleteMenuItem: async (parent, { _id }) => {
+            try {
+                const menuItem = await MenuItem.findByIdAndDelete(_id);
+                return "Menu Item Deleted";
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
     }
 };
+
+
 
 module.exports = resolvers;
