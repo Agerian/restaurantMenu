@@ -2,27 +2,30 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-enum MenuItemCategory {
-    BREAKFAST
-    LUNCH_AND_DINNER
-    BEVERAGES
-    BEER
-    WINE
-    SPIRITS
-    COCKTAILS
-}
-
 type MenuItem {
     _id: ID!
     name: String!
     description: String
     price: Float!
-    category: MenuItemCategory!
+    category: String!
+}
+
+input MenuItemInput {
+    name: String!
+    description: String
+    price: Float!
+    category: String!
 }
 
 type Query {
-    getAllMenuItemsByCategory(category: MenuItemCategory!): [MenuItem!]
+    getAllMenuItemsByCategory(category: String!): [MenuItem!]
     getMenuItemById(_id: ID!): MenuItem
+}
+
+type Mutation {
+    addMenuItem(input: MenuItemInput!): MenuItem
+    updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
+    deleteMenuItem(_id: ID!): String
 }
 `;
 
