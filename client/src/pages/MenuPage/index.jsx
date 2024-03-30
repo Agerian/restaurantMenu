@@ -1,25 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useQuery, gql } from '@apollo/client';
+import MenuItem from '../MenuItem';
 
-function Menu() {
-  const [menuItems, setMenuItems] = useState([]);
+const GET_MENU_ITEMS = gql`
+  query GetAllMenuItems {
+    getAllMenuItems {
+      _id
+      name
+      description
+      price
+      category
+    }
+  }
+`;
+
+const MenuPage = () => {
+  const { loading, error, data } = useQuery(GET_MENU_ITEMS);
+  const [categorizedItems, setCategorizedItems] = useState({});
 
   useEffect(() => {
-    fetch('/api/menu-items')
-      .then(response => response.json())
-      .then(data => setMenuItems(data))
-      .catch(error => console.log(error));
-  }, []);
+    if (data) {
+      const itemsByCategory = data.getAllMenuItems.reduce((acc, item) => {
+        const { category } = item;
+        if (!acc[category]) {
+          acc[category] = [];
+        }
+        acc[category].push(item);
+        return acc;
+      }, {});
+      
+      setCategorizedItems(itemsByCategory);
+    }
+  }, [data]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error loading menu items.</p>;
 
   return (
-    <div>
-      <h2>Our Menu</h2>
-      <ul>
-        {menuItems.map(item => (
-          <li key={item.id}>{item.name} =${item.price}</li>
-        ))}
-      </ul>
+    <div className="menu-container">
+      {Object.keys(categorizedItems).map(category => (
+        <div key={category} className="menu-category">
+          <h2>{category}</h2>
+          <div className="menu-items">
+            {categorizedItems[category].map(item => (
+              <MenuItem key={item._id} item={item} />
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
-export default Menu;
+export default MenuPage;
