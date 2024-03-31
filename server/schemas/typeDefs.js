@@ -18,6 +18,7 @@ input MenuItemInput {
 }
 
 type Query {
+    getAllMenuItems: [MenuItem!]
     getAllMenuItemsByCategory(category: String!): [MenuItem!]
     getMenuItemById(_id: ID!): MenuItem
 }

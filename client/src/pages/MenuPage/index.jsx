@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import MenuItem from '../MenuItem';
 
-const GET_MENU_ITEMS = gql`
+const GET_ALL_MENU_ITEMS = gql`
   query GetAllMenuItems {
     getAllMenuItems {
       _id
@@ -15,7 +15,7 @@ const GET_MENU_ITEMS = gql`
 `;
 
 const MenuPage = () => {
-  const { loading, error, data } = useQuery(GET_MENU_ITEMS);
+  const { loading, error, data } = useQuery(GET_ALL_MENU_ITEMS);
   const [categorizedItems, setCategorizedItems] = useState({});
 
   useEffect(() => {
