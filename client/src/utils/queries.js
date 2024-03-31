@@ -1,5 +1,17 @@
 import { gql } from '@apollo/client';
 
+export const GET_ALL_MENU_ITEMS = gql`
+  query GetAllMenuItems {
+    getAllMenuItems {
+      _id
+      name
+      description
+      price
+      category
+    }
+  }
+`;
+
 export const GET_ALL_MENU_ITEMS_BY_CATEGORY = gql`
 query getAllMenuItemsByCategory($category: String!) {
     getAllMenuItemsByCategory(category: $category) {
