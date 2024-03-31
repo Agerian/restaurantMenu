@@ -6,6 +6,16 @@ const { MenuItem } = require('../models');
 const resolvers = {
     Query: {
         //get all menu items by enum or category
+        getAllMenuItems: async () => {
+            try {
+                const menuItems = await MenuItem.find({});
+                return menuItems;
+            } catch (err) {
+                console.log(err);
+                throw new Error('Failed to retrieve menu items.');
+            }
+        },
+
         getAllMenuItemsByCategory: async (_, { category }) => {
             try {
                 const menuItems = await MenuItem.find({ category });
