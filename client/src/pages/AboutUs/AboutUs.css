@@ -1,0 +1,69 @@
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 20px;
+  max-width: 800px; /* Limit the content width for readability */
+}
+
+section {
+  margin-bottom: 40px; /* Adds space between sections */
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+p, li {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+
+li {
+  margin-bottom: 10px;
+}
+
+/* ImageGrid integration */
+.image-grid {
+  width: 100%; /* Ensures the grid spans the full width of its container */
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  /* Responsive adjustments for tablets */
+  div {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p, li {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Responsive adjustments for mobile */
+  div {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  p, li {
+    font-size: 0.8rem;
+  }
+}

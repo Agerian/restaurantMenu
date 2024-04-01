@@ -1,0 +1,66 @@
+/* Header.css */
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.brand a {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 128px;
+  font-weight: 700;
+  padding: 10px 20px;
+  text-align: center;
+  color: #2C95D0;
+  text-decoration: none;
+}
+
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7e7e7;
+}
+
+.nav li {
+  padding: 10px 20px;
+}
+
+.nav li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.nav li a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) { /* For tablets */
+  .brand a {
+    font-size: 48px; /* Slightly smaller font size */
+  }
+  .nav ul {
+    flex-direction: column; /* Stack nav items vertically */
+  }
+  .nav li {
+    padding: 5px 20px; /* Adjust padding for smaller screen */
+  }
+}
+
+@media (max-width: 480px) { /* For mobile devices */
+  .brand a {
+    font-size: 32px; /* Smaller font size for mobile */
+  }
+  .nav ul {
+    flex-direction: column;
+  }
+  .nav li {
+    padding: 5px 10px; /* Less padding on the sides */
+  }
+}
