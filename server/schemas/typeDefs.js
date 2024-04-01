@@ -2,6 +2,20 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
+
+type Profile {
+    _id: ID
+    name: String
+    email: String
+    password: String
+  }
+
+  type Auth {
+    token: ID!
+    profile: Profile
+  }
+
+
 type MenuItem {
     _id: ID!
     name: String!
@@ -18,12 +32,16 @@ input MenuItemInput {
 }
 
 type Query {
+    profiles: [Profile]!
     getAllMenuItems: [MenuItem!]
     getAllMenuItemsByCategory(category: String!): [MenuItem!]
     getMenuItemById(_id: ID!): MenuItem
 }
 
 type Mutation {
+    addProfile(name: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    removeProfile(profileId: ID!): Profile
     addMenuItem(input: MenuItemInput!): MenuItem
     updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
     deleteMenuItem(_id: ID!): String
