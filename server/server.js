@@ -3,6 +3,7 @@ const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
 require('dotenv').config();
+const { authMiddleware } = require('./utils/auth');// import middleware function
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -19,6 +20,10 @@ const startApolloServer = async () => {
 
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
+
+  app.use('/graphql', expressMiddleware(server, {
+    context: authMiddleware
+  }));// add the middleware function to the Apollo Server
 
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, '../client/dist')));
