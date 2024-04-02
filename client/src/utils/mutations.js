@@ -1,24 +1,24 @@
 import { gql } from '@apollo/client';
 
 export const ADD_PROFILE = gql`
-  mutation addProfile($name: String!, $email: String!, $password: String!) {
-    addProfile(name: $name, email: $email, password: $password) {
+  mutation addProfile($username: String!, $email: String!, $password: String!) {
+    addProfile(username: $username, email: $email, password: $password) {
       token
       profile {
         _id
-        name
+        username
       }
     }
   }
 `;
 
 export const LOGIN_USER = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation login($name: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
       profile {
         _id
-        name
+        username
       }
     }
   }
@@ -54,10 +54,20 @@ mutation deleteMenuItem($_id: ID!) {
 }
 `;
 
+export const REMOVE_PROFILE = gql`
+  mutation removeProfile($profileId: ID!) {
+    removeProfile(profileId: $profileId) {
+      _id
+      name
+    }
+  }
+`;
+
 export default {
     ADD_MENU_ITEM,
     UPDATE_MENU_ITEM,
     DELETE_MENU_ITEM,
     ADD_PROFILE,
-    LOGIN_USER
+    LOGIN_USER,
+    REMOVE_PROFILE
   };

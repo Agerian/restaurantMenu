@@ -73,14 +73,14 @@ const resolvers = {
                 console.log(err);
             }
         },
-        addProfile: async (parent, { name, email, password }) => {
-            const profile = await Profile.create({ name, email, password });
+        addProfile: async (parent, { username, email, password }) => {
+            const profile = await Profile.create({ username, email, password });
             const token = signToken(profile);
       
             return { token, profile };
           },
-          login: async (parent, { email, password }) => {
-            const profile = await Profile.findOne({ email });
+          login: async (parent, { username, password }) => {
+            const profile = await Profile.findOne({ username });
       
             if (!profile) {
               throw AuthenticationError
