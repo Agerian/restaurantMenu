@@ -16,7 +16,10 @@ const menuItemSchema = new mongoose.Schema({
     type: String,
     enum: ['Breakfast', 'Lunch & Dinner', 'Beverages', 'Beer', 'Wine', 'Spirits', 'Cocktails'],
     required: true
-  }
+  },
+  vineyard: String,
+  region: String,
+  tastingNotes: String
 });
 
 const MenuItem = mongoose.model('MenuItem', menuItemSchema);

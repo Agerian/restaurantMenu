@@ -16,12 +16,15 @@ type Profile {
   }
 
 
-type MenuItem {
+  type MenuItem {
     _id: ID!
     name: String!
     description: String
     price: Float!
     category: String!
+    vineyard: String
+    region: String
+    tastingNotes: String
 }
 
 input MenuItemInput {
@@ -29,6 +32,9 @@ input MenuItemInput {
     description: String
     price: Float!
     category: String!
+    vineyard: String
+    region: String
+    tastingNotes: String
 }
 
 type Query {
