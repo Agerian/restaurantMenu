@@ -6,6 +6,7 @@ import Menu from './pages/MenuPage';
 import About from './pages/AboutUs';
 import Contact from './pages/Contact';
 import Error from './pages/Error';
+import Admin from './pages/Admin';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: 'menu', element: <Menu /> },
       { path: 'about', element: <About /> },
       { path: 'contact', element: <Contact /> },
+      { path: 'admin', element: <Admin /> },
     ],
   },
 ]);
