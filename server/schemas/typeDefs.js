@@ -5,7 +5,7 @@ const typeDefs = gql`
 
 type Profile {
     _id: ID
-    name: String
+    username: String
     email: String
     password: String
   }
@@ -39,8 +39,8 @@ type Query {
 }
 
 type Mutation {
-    addProfile(name: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    addProfile(username: String!, email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     removeProfile(profileId: ID!): Profile
     addMenuItem(input: MenuItemInput!): MenuItem
     updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
