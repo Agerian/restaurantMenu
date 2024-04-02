@@ -10,10 +10,12 @@ const GET_ALL_MENU_ITEMS = gql`
       description
       price
       category
+      vineyard
+      region
+      tastingNotes
     }
   }
 `;
-
 const MenuPage = () => {
   const { loading, error, data } = useQuery(GET_ALL_MENU_ITEMS);
   const [categorizedItems, setCategorizedItems] = useState({});

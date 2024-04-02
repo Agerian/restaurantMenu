@@ -45,15 +45,11 @@ const resolvers = {
     Mutation: {
         addMenuItem: async (parent, { input }) => {
             try {
-                const menuItem = await MenuItem.create({
-                    name: input.name,
-                    description: input.description,
-                    price: input.price,
-                    category: input.category
-                });
+                const menuItem = await MenuItem.create(input);
                 return menuItem;
             } catch (err) {
                 console.log(err);
+                throw new Error('Failed to add menu item.');
             }
         },
         updateMenuItem: async (parent, { _id, input }) => {
@@ -62,7 +58,7 @@ const resolvers = {
                 return menuItem;
             } catch (err) {
                 console.log(err);
-                throw new Error('Something went wrong');
+                throw new Error('Failed to update menu item.');
             }
         },
         deleteMenuItem: async (parent, { _id }) => {
