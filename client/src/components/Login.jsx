@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
+import { useNavigate } from 'react-router-dom';
 import { LOGIN_USER } from '../utils/mutations';
 import AuthService from '../utils/auth';
+import { useOutletContext } from 'react-router-dom';
 
 function LoginForm() {
+  const [isAuthenticated, setIsAuthenticated] = useOutletContext();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [loginUser, { error }] = useMutation(LOGIN_USER);
@@ -14,7 +17,10 @@ function LoginForm() {
       const { data } = await loginUser({
         variables: { username, password }
       });
+      setIsAuthenticated(true);
       AuthService.login(data.login.token);
+
+
     } catch (err) {
       console.error('Login failed:', err);
     }
