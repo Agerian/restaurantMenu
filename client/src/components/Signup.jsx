@@ -1,21 +1,36 @@
 import React, { useState } from 'react';
+import { useMutation } from '@apollo/react-hooks';
+import { ADD_PROFILE } from '../utils/mutations';
+import Authservice from '../utils/auth';
+import { useOutletContext } from 'react-router-dom';
 
-function Signup({ onSignup }) {
-  const [name, setName] = useState('');
+
+function SignupForm() {
+  const [isAuthenticated, setIsAuthenticated] = useOutletContext();
+  const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [addProfile, { error }] = useMutation(ADD_PROFILE);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call signup function passed from parent component
-    onSignup({ name, email, password });
+    try {
+      const { data } = await addProfile({
+        variables: { username, email, password }
+      });
+      setIsAuthenticated(true);
+      Authservice.login(data.addProfile.token);
+
+    } catch (err) {
+      console.error('Signup failed:', err);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <label>
         Name:
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" value={username} onChange={(e) => setUserName(e.target.value)} />
       </label>
       <label>
         Email:
@@ -30,4 +45,4 @@ function Signup({ onSignup }) {
   );
 }
 
-export default Signup;
+export default SignupForm;
