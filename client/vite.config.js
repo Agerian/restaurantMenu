@@ -12,7 +12,7 @@ export default defineConfig({
     // Without this line, API calls would attempt to fallback and query for data from the current domain: localhost:3000
     proxy: {
       '/graphql': {
-        target: 'http://localhost:3001',
+        target: 'http://localhost:3002',
         changeOrigin: true,
         secure: false,
       },     

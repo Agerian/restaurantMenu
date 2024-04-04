@@ -14,7 +14,6 @@ const menuItemSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['Breakfast', 'Lunch & Dinner', 'Beverages', 'Beer', 'Wine', 'Spirits', 'Cocktails'],
     required: true
   },
   vineyard: String,
