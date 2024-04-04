@@ -1,7 +1,8 @@
 import React from 'react';
 import LoginForm from '../../components/Login';
 import SignupForm from '../../components/Signup';
-import DeleteUserForm from '../../components/DeleteUser';
+import RemoveProfile from '../../components/RemoveProfile';
+
 
 function Admin() {
   return (
@@ -11,7 +12,7 @@ function Admin() {
       <div>Sign Up</div>
         <SignupForm />
       <div>Delete User</div>
-        <DeleteUserForm />
+        <RemoveProfile />
     </div>
   );
 }

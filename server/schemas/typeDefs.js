@@ -47,7 +47,7 @@ type Query {
 type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    removeProfile(profileId: ID!): Profile
+    removeProfile(username: String!): Profile
     addMenuItem(input: MenuItemInput!): MenuItem
     updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
     deleteMenuItem(_id: ID!): String

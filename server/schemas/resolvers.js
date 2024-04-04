@@ -91,8 +91,9 @@ const resolvers = {
             const token = signToken(profile);
             return { token, profile };
           },
-          removeProfile: async (parent, { profileId }) => {
-            return Profile.findOneAndDelete({ _id: profileId });
+
+          removeProfile: async (parent, { username }) => {
+            return Profile.findOneAndDelete({ username });
           },
     }
 };
