@@ -1,4 +1,3 @@
-//added in the gql from apollo-server-express to use the gql template literal
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
@@ -47,7 +46,7 @@ type Query {
 type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    removeProfile(profileId: ID!): Profile
+    removeProfile(username: String!): Profile
     addMenuItem(input: MenuItemInput!): MenuItem
     updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
     deleteMenuItem(_id: ID!): String

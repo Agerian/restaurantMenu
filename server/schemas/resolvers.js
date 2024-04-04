@@ -69,6 +69,7 @@ const resolvers = {
                 console.log(err);
             }
         },
+        //changed id to username
         addProfile: async (parent, { username, email, password }) => {
             const profile = await Profile.create({ username, email, password });
             const token = signToken(profile);
@@ -91,8 +92,9 @@ const resolvers = {
             const token = signToken(profile);
             return { token, profile };
           },
-          removeProfile: async (parent, { profileId }) => {
-            return Profile.findOneAndDelete({ _id: profileId });
+
+          removeProfile: async (parent, { username }) => {
+            return Profile.findOneAndDelete({ username });
           },
     }
 };

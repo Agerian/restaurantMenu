@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-
+//changed from id to username
 export const ADD_PROFILE = gql`
   mutation addProfile($username: String!, $email: String!, $password: String!) {
     addProfile(username: $username, email: $email, password: $password) {
@@ -55,12 +55,12 @@ mutation deleteMenuItem($_id: ID!) {
 `;
 
 export const REMOVE_PROFILE = gql`
-  mutation removeProfile($profileId: ID!) {
-    removeProfile(profileId: $profileId) {
-      _id
-      name
-    }
+mutation removeProfile($username: String!) {
+  removeProfile(username: $username) {
+    _id
+    username
   }
+}
 `;
 
 export default {

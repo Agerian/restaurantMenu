@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom'; I believe we can remove
 import { LOGIN_USER } from '../utils/mutations';
 import AuthService from '../utils/auth';
 import { useOutletContext } from 'react-router-dom';

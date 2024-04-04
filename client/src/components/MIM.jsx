@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
+import RemoveProfile from './RemoveProfile';
 import { GET_ALL_MENU_ITEMS } from '../utils/queries';
 import { ADD_MENU_ITEM, UPDATE_MENU_ITEM, DELETE_MENU_ITEM } from '../utils/mutations';
 
@@ -104,6 +105,8 @@ function MIM() {
           </li>
         ))}
       </ul>
+      <h2>Remove a user Profile</h2>
+      <RemoveProfile />
     </div>
   );
 }
