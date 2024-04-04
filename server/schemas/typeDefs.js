@@ -1,4 +1,3 @@
-//added in the gql from apollo-server-express to use the gql template literal
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`

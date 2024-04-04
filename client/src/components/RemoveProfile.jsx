@@ -1,3 +1,4 @@
+//use this component instead of the previous deleteprofile.jsx
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { REMOVE_PROFILE } from '../utils/mutations';

@@ -2,7 +2,6 @@ import React from 'react';
 import { useOutletContext } from 'react-router-dom'; // Import useOutletContext hook
 import LoginForm from '../../components/Login';
 import SignupForm from '../../components/Signup';
-import DeleteUserForm from '../../components/DeleteUser';
 import MIM from '../../components/MIM'; // Adjust the import path as necessary
 
 function Admin() {
@@ -19,8 +18,6 @@ function Admin() {
         <LoginForm />
         <div>Sign Up</div>
           <SignupForm />
-        <div>Delete User</div>
-          <DeleteUserForm />
       </div>
     );
   }

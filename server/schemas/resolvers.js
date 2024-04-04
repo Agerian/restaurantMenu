@@ -69,6 +69,7 @@ const resolvers = {
                 console.log(err);
             }
         },
+        //changed id to username
         addProfile: async (parent, { username, email, password }) => {
             const profile = await Profile.create({ username, email, password });
             const token = signToken(profile);
