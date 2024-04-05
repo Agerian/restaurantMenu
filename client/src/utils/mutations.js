@@ -32,6 +32,9 @@ mutation addMenuItem($input: MenuItemInput!) {
         description
         price
         category
+        vineyard
+        region
+        tastingNotes
     }
 }
 `;
@@ -44,6 +47,9 @@ mutation updateMenuItem($_id: ID!, $input: MenuItemInput!) {
         description
         price
         category
+        vineyard
+        region
+        tastingNotes
     }
 }
 `;
