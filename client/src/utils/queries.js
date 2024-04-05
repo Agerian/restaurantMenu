@@ -18,6 +18,9 @@ export const GET_ALL_MENU_ITEMS = gql`
       description
       price
       category
+      vineyard
+      region
+      tastingNotes
     }
   }
 `;
@@ -30,6 +33,9 @@ query getAllMenuItemsByCategory($category: String!) {
         description
         price
         category
+        vineyard
+        region
+        tastingNotes
     }
 }
 `;
@@ -42,6 +48,9 @@ query getMenuItemById($_id: ID!) {
         description
         price
         category
+        vineyard
+        region
+        tastingNotes
     }
 }
 `;

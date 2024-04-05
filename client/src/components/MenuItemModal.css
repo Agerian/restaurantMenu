@@ -1,0 +1,7 @@
+input[type="text"], [type="number"] {
+  width: 100%; /* Full width */
+  padding: 10px; /* Comfortable padding */
+  margin: 5px 0; /* Space between fields */
+  border: 1px solid #ccc; /* Light border */
+  border-radius: 4px; /* Rounded corners */
+}
