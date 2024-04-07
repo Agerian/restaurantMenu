@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import RemoveProfile from './RemoveProfile';
-import SignupForm from './Signup';
 import MenuItemModal from './MenuItemModal';
 import { GET_ALL_MENU_ITEMS } from '../utils/queries';
 import { ADD_MENU_ITEM, UPDATE_MENU_ITEM, DELETE_MENU_ITEM } from '../utils/mutations';
@@ -13,7 +12,6 @@ function MIM() {
   });
   const [modalOpen, setModalOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState(null); // null for add, object for edit
-  const [isAuthenticated, setIsAuthenticated] = useState(false);// added for SignupForm
 
   const handleOpenModal = (item) => {
     setCurrentItem(item); // Pass the item to edit or null for a new item
@@ -34,16 +32,14 @@ function MIM() {
 
   return (
     <div>
-      <h2>Employee Management</h2>
-      {!isAuthenticated && <SignupForm />}
-      <RemoveProfile />
       <h2>Menu Item Management</h2>
       <button onClick={() => handleOpenModal(null)}>Add New Menu Item</button>
       
       <ul>
   {data.getAllMenuItems.map((item) => (
     <li key={item._id}>
-      {item.name} - {item.description} - ${item.price} - {item.category}
+      {item.name} - {item.description} - ${item.price} - 
+      {item.category && item.category.name} {/* Adjusted this line */}
       {/* Conditionally render the new fields if they exist */}
       {item.vineyard && <div>Vineyard: {item.vineyard}</div>}
       {item.region && <div>Region: {item.region}</div>}

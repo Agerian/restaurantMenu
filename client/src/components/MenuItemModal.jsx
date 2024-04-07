@@ -1,48 +1,58 @@
-import React, { useState, useEffect } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_MENU_ITEM, UPDATE_MENU_ITEM } from '../utils/mutations';
-import './MenuItemModal.css';
+import React, { useState, useEffect } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_MENU_ITEM, UPDATE_MENU_ITEM } from "../utils/mutations";
+import { GET_ALL_MENU_ITEMS, GET_CATEGORIES } from "../utils/queries";
+import "./MenuItemModal.css";
 
 const MenuItemModal = ({ item, onClose, refetch }) => {
   const isEditMode = !!item;
+  const { loading: loadingCategories, data: categoriesData } =
+    useQuery(GET_CATEGORIES);
   const [formData, setFormData] = useState({
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     price: 0,
-    category: '',
-    vineyard: '',
-    region: '',
-    tastingNotes: '',
+    category: "",
+    vineyard: "",
+    region: "",
+    tastingNotes: "",
   });
 
   const [errors, setErrors] = useState({});
 
+  // Load item data into form for editing
   useEffect(() => {
     if (isEditMode) {
       setFormData({
         name: item.name,
         description: item.description,
         price: item.price,
-        category: item.category,
-        vineyard: item.vineyard || '',
-        region: item.region || '',
-        tastingNotes: item.tastingNotes || '',
+        category: item.category._id, // Ensure you're using the category ID
+        vineyard: item.vineyard || "",
+        region: item.region || "",
+        tastingNotes: item.tastingNotes || "",
       });
     }
   }, [item, isEditMode]);
 
   const [addMenuItem] = useMutation(ADD_MENU_ITEM, {
     onCompleted: () => {
-      refetch();
+      // refetch(); // You may not need this if refetchQueries works as intended
       onClose();
     },
+    refetchQueries: [
+      { query: GET_ALL_MENU_ITEMS }, // This will refetch your menu items query
+    ],
   });
 
-  const [updateMenuItem] = useMutation(UPDATE_MENU_ITEM, {
+const [updateMenuItem] = useMutation(UPDATE_MENU_ITEM, {
     onCompleted: () => {
-      refetch();
+      // refetch(); // Similarly, this may not be needed
       onClose();
     },
+    refetchQueries: [
+      { query: GET_ALL_MENU_ITEMS }, // Ensures the menu items list is up-to-date
+    ],
   });
 
   const handleChange = (e) => {
@@ -51,44 +61,39 @@ const MenuItemModal = ({ item, onClose, refetch }) => {
       ...prev,
       [name]: value,
     }));
-    // Clear errors for a field when it's changed
-    if (errors[name]) {
-      setErrors(prev => ({...prev, [name]: null}));
-    }
-  };
-
-  const validateForm = () => {
-    const newErrors = {};
-    
-    // Basic validation: Check for empty required fields
-    if (!formData.name) newErrors.name = 'Name is required';
-    if (!formData.price) newErrors.price = 'Price is required';
-    if (!formData.category) newErrors.category = 'Category is required';
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0; // Form is valid if no errors
+    // Optionally clear errors for a field when it's changed
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    // Validate form before proceeding
-    if (!validateForm()) {
-      return; // Stop if validation fails
-    }
 
-    const input = { ...formData, price: parseFloat(formData.price) };
+    // Pre-process formData to remove empty string values before submitting
+    const filteredInput = Object.entries(formData).reduce(
+      (acc, [key, value]) => {
+        // Only add non-empty values to the filteredInput object
+        if (value !== "") {
+          acc[key] = value;
+        }
+        return acc;
+      },
+      {}
+    );
+
+    // Make sure to parse the price as a float
+    filteredInput.price = parseFloat(filteredInput.price);
 
     if (isEditMode) {
       await updateMenuItem({
-        variables: { _id: item._id, input },
+        variables: { _id: item._id, input: filteredInput },
       });
     } else {
       await addMenuItem({
-        variables: { input },
+        variables: { input: filteredInput },
       });
     }
   };
+
+  if (loadingCategories) return <p>Loading categories...</p>;
 
   return (
     <div className="modal">
@@ -100,7 +105,7 @@ const MenuItemModal = ({ item, onClose, refetch }) => {
           value={formData.name}
           onChange={handleChange}
         />
-         {errors.name && <div style={{ color: 'red' }}>{errors.name}</div>}
+        {errors.name && <div style={{ color: "red" }}>{errors.name}</div>}
 
         <input
           type="text"
@@ -117,23 +122,29 @@ const MenuItemModal = ({ item, onClose, refetch }) => {
           value={formData.price}
           onChange={handleChange}
         />
-        {errors.price && <div style={{ color: 'red' }}>{errors.price}</div>}
+        {errors.price && <div style={{ color: "red" }}>{errors.price}</div>}
+
+        <select
+          name="category"
+          value={formData.category}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select a category</option>
+          {categoriesData &&
+            categoriesData.categories.map((category) => (
+              <option key={category._id} value={category._id}>
+                {category.name}
+              </option>
+            ))}
+        </select>
 
         <input
           type="text"
-          name="category"
-          placeholder="Category"
-          value={formData.category}
+          name="vineyard"
+          placeholder="WINE - Vineyard"
+          value={formData.vineyard}
           onChange={handleChange}
-        />
-        {errors.category && <div style={{ color: 'red' }}>{errors.category}</div>}
-
-        <input
-        type="text"
-        name="vineyard"
-        placeholder="WINE - Vineyard"
-        value={formData.vineyard}
-        onChange={handleChange}
         />
         <input
           type="text"
@@ -149,8 +160,10 @@ const MenuItemModal = ({ item, onClose, refetch }) => {
           value={formData.tastingNotes}
           onChange={handleChange}
         />
-        <button type="submit">{isEditMode ? 'Update' : 'Add'} Menu Item</button>
-        <button type="button" onClick={onClose}>Cancel</button>
+        <button type="submit">{isEditMode ? "Update" : "Add"} Menu Item</button>
+        <button type="button" onClick={onClose}>
+          Cancel
+        </button>
       </form>
     </div>
   );

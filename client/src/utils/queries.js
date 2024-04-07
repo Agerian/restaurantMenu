@@ -17,7 +17,10 @@ export const GET_ALL_MENU_ITEMS = gql`
       name
       description
       price
-      category
+      category {
+        _id
+        name
+      }
       vineyard
       region
       tastingNotes
@@ -54,11 +57,22 @@ query getMenuItemById($_id: ID!) {
     }
 }
 `;
+export const GET_CATEGORIES = gql`
+  query getCategories {
+    categories {
+      _id
+      name
+    }
+  }
+`;
+
 
 
 export default {
     GET_ALL_MENU_ITEMS_BY_CATEGORY,
     GET_MENU_ITEM_BY_ID,
     GET_ALL_MENU_ITEMS,
-    QUERY_PROFILES
+    QUERY_PROFILES,
+    GET_CATEGORIES
   };
+

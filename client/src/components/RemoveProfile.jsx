@@ -20,14 +20,17 @@ function RemoveProfile() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-      </label>
-      <button type="submit">Remove Profile</button>
-      {error && <p>Error: {error.message}</p>}
-    </form>
+    <div>
+      <h2>Remove Profile</h2>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username:
+          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <button type="submit">Remove Profile</button>
+        {error && <p>Error: {error.message}</p>}
+      </form>
+    </div>
   );
 }
 

@@ -1,5 +1,5 @@
 //pulling in models from models folder
-const { MenuItem, Profile } = require('../models');
+const { MenuItem, Profile, Category } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 //if We add in the admin role we need to add JWT and Auth erre should be added to a .../utils/auth.js file if we do
 //will need to add more to the resolvers as we continue the project including mutations
@@ -10,13 +10,13 @@ const resolvers = {
         //get all menu items by enum or category
         getAllMenuItems: async () => {
             try {
-                const menuItems = await MenuItem.find({});
-                return menuItems;
+              const menuItems = await MenuItem.find({}).populate('category');
+              return menuItems;
             } catch (err) {
-                console.log(err);
-                throw new Error('Failed to retrieve menu items.');
+              console.log(err);
+              throw new Error('Failed to retrieve menu items.');
             }
-        },
+          },
 
         getAllMenuItemsByCategory: async (_, { category }) => {
             try {
@@ -38,6 +38,9 @@ const resolvers = {
         profiles: async () => {
             return Profile.find();
         },
+        categories: async () => {
+            return Category.find({});
+        },
     },
 
 
@@ -46,7 +49,9 @@ const resolvers = {
         addMenuItem: async (parent, { input }) => {
             try {
                 const menuItem = await MenuItem.create(input);
-                return menuItem;
+                // Refetch the menuItem with population
+                const populatedMenuItem = await MenuItem.findById(menuItem._id).populate('category');
+                return populatedMenuItem;
             } catch (err) {
                 console.log(err);
                 throw new Error('Failed to add menu item.');
@@ -95,7 +100,22 @@ const resolvers = {
 
           removeProfile: async (parent, { username }) => {
             return Profile.findOneAndDelete({ username });
-          },
+        },
+        // Add a category
+        addCategory: async (_, { name }) => {
+            return Category.create({ name });
+        },
+
+        // Update a category
+        updateCategory: async (_, { _id, name }) => {
+            return Category.findByIdAndUpdate(_id, { name }, { new: true });
+        },
+
+        // Delete a category
+        deleteCategory: async (_, { _id }) => {
+            await Category.findByIdAndDelete(_id);
+            return "Category deleted successfully.";
+        },
     }
 };
 
