@@ -14,13 +14,17 @@ type Profile {
     profile: Profile
   }
 
+  type Category {
+    _id: ID!
+    name: String!
+  }
 
   type MenuItem {
     _id: ID!
     name: String!
     description: String
     price: Float!
-    category: String!
+    category: Category!
     vineyard: String
     region: String
     tastingNotes: String
@@ -30,7 +34,7 @@ input MenuItemInput {
     name: String!
     description: String
     price: Float!
-    category: String!
+    category: ID!
     vineyard: String
     region: String
     tastingNotes: String
@@ -41,6 +45,7 @@ type Query {
     getAllMenuItems: [MenuItem!]
     getAllMenuItemsByCategory(category: String!): [MenuItem!]
     getMenuItemById(_id: ID!): MenuItem
+    categories: [Category]!
 }
 
 type Mutation {
@@ -50,6 +55,9 @@ type Mutation {
     addMenuItem(input: MenuItemInput!): MenuItem
     updateMenuItem(_id: ID!, input: MenuItemInput!): MenuItem
     deleteMenuItem(_id: ID!): String
+    addCategory(name: String!): Category
+    updateCategory(_id: ID!, name: String!): Category
+    deleteCategory(_id: ID!): String
 }
 `;
 

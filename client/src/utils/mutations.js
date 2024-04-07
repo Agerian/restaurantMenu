@@ -31,7 +31,10 @@ mutation addMenuItem($input: MenuItemInput!) {
         name
         description
         price
-        category
+        category {
+          _id
+          name
+        }
         vineyard
         region
         tastingNotes
@@ -46,7 +49,10 @@ mutation updateMenuItem($_id: ID!, $input: MenuItemInput!) {
         name
         description
         price
-        category
+        category {
+          _id
+          name
+        }
         vineyard
         region
         tastingNotes
@@ -69,11 +75,38 @@ mutation removeProfile($username: String!) {
 }
 `;
 
+export const ADD_CATEGORY = gql`
+  mutation addCategory($name: String!) {
+    addCategory(name: $name) {
+      _id
+      name
+    }
+  }
+`;
+
+export const UPDATE_CATEGORY = gql`
+  mutation updateCategory($_id: ID!, $name: String!) {
+    updateCategory(_id: $_id, name: $name) {
+      _id
+      name
+    }
+  }
+`;
+
+export const DELETE_CATEGORY = gql`
+  mutation deleteCategory($_id: ID!) {
+    deleteCategory(_id: $_id)
+  }
+`;
+
 export default {
     ADD_MENU_ITEM,
     UPDATE_MENU_ITEM,
     DELETE_MENU_ITEM,
     ADD_PROFILE,
     LOGIN_USER,
-    REMOVE_PROFILE
+    REMOVE_PROFILE,
+    ADD_CATEGORY,
+    UPDATE_CATEGORY,
+    DELETE_CATEGORY
   };
