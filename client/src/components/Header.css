@@ -41,9 +41,9 @@
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) { /* For tablets */
+@media (max-width: 900px) { /* For tablets */
   .brand a {
-    font-size: 48px; /* Slightly smaller font size */
+    font-size: 93px; /* Slightly smaller font size */
   }
   .nav ul {
     flex-direction: column; /* Stack nav items vertically */
@@ -53,7 +53,7 @@
   }
 }
 
-@media (max-width: 480px) { /* For mobile devices */
+@media (max-width: 600px) { /* For mobile devices */
   .brand a {
     font-size: 32px; /* Smaller font size for mobile */
   }
