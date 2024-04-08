@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, gql } from '@apollo/client';
 import MenuItem from '../MenuItem';
+import './MenuPage.css';
 
 const GET_ALL_MENU_ITEMS = gql`
   query GetAllMenuItems {
@@ -22,19 +23,20 @@ const GET_ALL_MENU_ITEMS = gql`
 
 const categorySubcategories = {
   "Breakfast": [
-    "Breakfast",
+    "Breakfast - Breakfast",
     "Breakfast - Egg Omelettes or Tofu Scrambles", 
     "Breakfast - I ♥ Potatoes", 
     "Breakfast - Pozole", 
     "Breakfast - Sides"
   ],
   "Cafe": [
-    "Burgers", 
-    "Salads", 
-    "Sandwiches", 
-    "Sides"
+    "Cafe - Burgers", 
+    "Cafe - Salads", 
+    "Cafe - Sandwiches", 
+    "Cafe - Sides"
   ],
   "Specialties": [
+    "Specialties - Specialties",
     "Specialties - I ♥ Seafood", 
     "Specialties - On the Side"
   ],
@@ -83,6 +85,7 @@ const categorySubcategories = {
     "Spirits - Rum"
   ],
   "Cocktails": [
+    "Cocktails - Cocktails",
     "Cocktails - Classics", 
     "Cocktails - Boozy Coffee", 
     "Cocktails - N/A"
@@ -90,7 +93,6 @@ const categorySubcategories = {
   // Add any additional categories or subcategories here
 };
 
-// You can then derive categoryOrder from this mapping
 const MenuPage = () => {
   const { loading, error, data } = useQuery(GET_ALL_MENU_ITEMS);
   const [categorizedItems, setCategorizedItems] = useState({});
@@ -99,20 +101,30 @@ const MenuPage = () => {
 
   useEffect(() => {
     if (data) {
-      const itemsByCategory = {};
-      data.getAllMenuItems.forEach(item => {
-        const category = item.category.name;
-        if (!itemsByCategory[category]) {
-          itemsByCategory[category] = [];
-        }
-        itemsByCategory[category].push(item);
+      const tempCategorizedItems = {};
+
+      // Initialize categories and subcategories
+      Object.entries(categorySubcategories).forEach(([mainCategory, subcategories]) => {
+        tempCategorizedItems[mainCategory] = []; // Initialize main category
+        subcategories.forEach(subcategory => {
+          tempCategorizedItems[subcategory] = []; // Initialize subcategories
+        });
       });
-      setCategorizedItems(itemsByCategory);
+
+      data.getAllMenuItems.forEach(item => {
+        const { name } = item.category;
+        // Assign item to its direct category or subcategory
+        if (tempCategorizedItems.hasOwnProperty(name)) {
+          tempCategorizedItems[name].push(item);
+        }
+      });
+
+      setCategorizedItems(tempCategorizedItems);
     }
   }, [data]);
 
-  const handleSubcategoryChange = (category, subcategory) => {
-    setActiveSubcategories(prev => ({ ...prev, [category]: subcategory }));
+  const handleSubcategoryChange = (mainCategory, subcategory) => {
+    setActiveSubcategories(prev => ({ ...prev, [mainCategory]: subcategory }));
   };
 
   const toggleCategory = (category) => {
@@ -124,31 +136,28 @@ const MenuPage = () => {
 
   return (
     <div className="menu-container">
-      {Object.keys(categorySubcategories).map((category) => (
-        <div key={category} className="menu-category">
-          <h2 onClick={() => toggleCategory(category)}>{category}</h2>
-          {expandedCategory === category && (
-            <div>
-              {categorySubcategories[category].length > 0 ? (
-                categorySubcategories[category].map(subcategory => (
-                  <div key={subcategory}>
-                    <button
-                      onClick={() => handleSubcategoryChange(category, subcategory)}
-                      className={activeSubcategories[category] === subcategory ? 'active' : ''}
-                    >
-                      {subcategory}
-                    </button>
-                  </div>
-                ))
-              ) : null}
-              <div className="menu-items">
-                {(activeSubcategories[category] === 'All' || !activeSubcategories[category] ? Object.values(categorizedItems).flat() : categorizedItems[activeSubcategories[category]] || [])
-                  .filter(item => item.category.name.startsWith(category))
-                  .map(item => (
-                    <MenuItem key={item._id} item={item} />
-                  ))}
+      {Object.keys(categorySubcategories).map(mainCategory => (
+        <div key={mainCategory} className="menu-category">
+          <h2 onClick={() => toggleCategory(mainCategory)}>{mainCategory}</h2>
+          {expandedCategory === mainCategory && (
+            <>
+              <div className="subcategory-tabs">
+                {categorySubcategories[mainCategory].map(subcategory => (
+                  <button
+                    key={subcategory}
+                    onClick={() => handleSubcategoryChange(mainCategory, subcategory)}
+                    className={activeSubcategories[mainCategory] === subcategory ? 'active' : ''}
+                  >
+                    {subcategory.replace(mainCategory + ' - ', '')}
+                  </button>
+                ))}
               </div>
-            </div>
+              <div className="menu-items">
+                {categorizedItems[activeSubcategories[mainCategory] || mainCategory]?.map(item => (
+                  <MenuItem key={item._id} item={item} />
+                ))}
+              </div>
+            </>
           )}
         </div>
       ))}

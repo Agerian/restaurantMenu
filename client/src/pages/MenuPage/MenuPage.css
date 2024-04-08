@@ -1,0 +1,94 @@
+.menu-container {
+  font-family: 'Times New Roman', Times, serif;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.menu-category {
+  margin-bottom: 30px;
+}
+
+.menu-category h2 {
+  font-size: 24px;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.menu-category h3 {
+  font-size: 20px;
+  color: #555;
+  margin-top: 20px;
+  margin-bottom: 5px;
+}
+
+.menu-items {
+  padding-left: 20px;
+}
+
+.menu-item {
+  border-bottom: 1px dotted #aaa;
+  padding: 10px 0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.subcategory-tabs button {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.subcategory-tabs button.active {
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.menu-item-name {
+  font-weight: bold;
+}
+
+.menu-item-description {
+  color: #666;
+}
+
+.menu-item-price {
+  float: right;
+  font-weight: bold;
+}
+
+/* Vegan and gluten-free options label styling */
+.menu-item .vegan-option,
+.menu-item .gluten-free-option {
+  font-style: italic;
+  font-size: smaller;
+  color: #888;
+}
+
+/* Additional responsive styles for smaller screens */
+@media (max-width: 900px) {
+  .menu-container {
+    padding: 10px;
+  }
+  .menu-category h2 {
+    font-size: 22px;
+  }
+}
+
+/* Styling for items that have vegan or gluten-free options */
+.menu-item .vegan-option::before,
+.menu-item .gluten-free-option::before {
+  content: '•';
+  padding-right: 5px;
+}
+
