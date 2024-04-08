@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_CATEGORIES } from '../utils/queries';
 import { ADD_CATEGORY, UPDATE_CATEGORY, DELETE_CATEGORY } from '../utils/mutations';
+import './CategoryManagement.css'; // Import CSS file for styling
 
 const CategoryManagement = () => {
     const { loading, error, data, refetch } = useQuery(GET_CATEGORIES);
@@ -41,8 +42,8 @@ const CategoryManagement = () => {
     if (error) return <p>Error :(</p>;
 
     return (
-        <div>
-            <h2>Manage Categories</h2>
+        <div className="category-container">
+            <h2 className='manage-heading'>Manage Categories</h2>
             <div>
                 <input
                     type="text"
@@ -50,10 +51,10 @@ const CategoryManagement = () => {
                     value={newCategoryName}
                     onChange={(e) => setNewCategoryName(e.target.value)}
                 />
-                <button onClick={handleAddCategory}>Add Category</button>
+                <button className="add-button"onClick={handleAddCategory}>Add Category</button>
             </div>
             {data.categories.map((category) => (
-                <div key={category._id}>
+                <div key={category._id} className="category-item">
                     {editCategoryId === category._id ? (
                         <>
                             <input
@@ -71,7 +72,7 @@ const CategoryManagement = () => {
                                 setEditCategoryId(category._id);
                                 setEditCategoryName(category.name);
                             }}>Edit</button>
-                            <button onClick={() => handleDeleteCategory(category._id)}>Delete</button>
+                            <button onClick={() => handleDeleteCategory(category._id)} className="delete-button">Delete</button>
                         </>
                     )}
                 </div>
