@@ -161,6 +161,7 @@ const MenuPage = () => {
   if (error) return <p>Error loading menu items.</p>;
 
   const images = [
+    /*
     { src: "/images/MenuPage/Cocktail.jpg", alt: "Spicy cocktail", className: "grid-item large" },
     { src: "/images/MenuPage/Wine (22).jpg", alt: "Wine & flowers", className: "grid-item large" },
     { src: "/images/MenuPage/Coffee.jpg", alt: "Coffee Art", className: "grid-item large" },
@@ -187,7 +188,33 @@ const MenuPage = () => {
     { src: "/images/MenuPage/Salad.jpg", alt: "Restaurant ambiance", className: "grid-item" },
     { src: "/images/MenuPage/SalmonGreens.jpg", alt: "Bread basket", className: "grid-item" },
     { src: "/images/MenuPage/ShishitoPeppers.jpg", alt: "Coffee cup", className: "grid-item" },
-
+    */
+    { src: "/images/MenuPage/Cocktail.webp", alt: "Spicy cocktail", className: "grid-item large" },
+    { src: "/images/MenuPage/Wine (22).webp", alt: "Wine & flowers", className: "grid-item large" },
+    { src: "/images/MenuPage/Coffee.webp", alt: "Coffee Art", className: "grid-item large" },
+    { src: "/images/MenuPage/Cocktail (20).webp", alt: "Cocktail", className: "grid-item large" }, 
+    { src: "/images/MenuPage/Wine (29).webp", alt: "Restaurant ambiance", className: "grid-item large" },
+  
+    { src: "/images/MenuPage/ArugalaBlueCheeseSalad.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/BangBangBroccoli.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/Burger (4).webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/Chihuamelette (2).webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/CitrusSalmon.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/Dessert (6).webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/FalafelWrap.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/GreenPozole.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/FarmerOmelette.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/ImpossibleCheesesteak.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/KimchiFriedRiceTofu.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/MatchaPancakes.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/Migas.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/Moroccan Toast.webp", alt: "Cocktail ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/Nachos.webp", alt: "Brunch dishes", className: "grid-item" },
+    { src: "/images/MenuPage/PozoleRed.webp", alt: "Outdoor dining tables", className: "grid-item" },
+    { src: "/images/MenuPage/SaffronRisotto.webp", alt: "Wine bottles", className: "grid-item" },
+    { src: "/images/MenuPage/Salad.webp", alt: "Restaurant ambiance", className: "grid-item" },
+    { src: "/images/MenuPage/SalmonGreens.webp", alt: "Bread basket", className: "grid-item" },
+    { src: "/images/MenuPage/ShishitoPeppers.webp", alt: "Coffee cup", className: "grid-item" },
   ]
 
   return (
