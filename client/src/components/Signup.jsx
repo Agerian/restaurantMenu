@@ -28,6 +28,7 @@ function SignupForm() {
 
   return (
     <div>
+      <h1>User Management</h1>
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
         <label>
