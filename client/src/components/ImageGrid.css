@@ -7,7 +7,7 @@
 }
 
 /* Tablets (Assuming 768px is the breakpoint for tablets) */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .image-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -17,7 +17,7 @@
 }
 
 /* Mobile devices (Assuming 480px is the breakpoint for mobile devices) */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .image-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -38,13 +38,13 @@
 }
 
 /* Adjustments for large items on smaller screens */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .grid-item.large {
     /* Optional: Adjust large item span for tablet */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .grid-item.large {
     grid-column: span 2; /* Ensure large items span full width on mobile */
     grid-row: span 2; /* Adjust if necessary to maintain aspect ratio */

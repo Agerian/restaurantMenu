@@ -1,94 +1,124 @@
-.menu-container {
-  font-family: 'Times New Roman', Times, serif;
-  background-color: #fff;
+/* Base Page Styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: #fdfaf6;
+  font-family: 'Playfair Display', serif;
   color: #333;
-  border: 1px solid #ddd;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
 }
 
-.menu-category {
+/* MenuPage.css */
+.menu-page-container {
+  position: relative;
+  padding-top: 20px;
+}
+
+.menu-content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  max-width: 800px;
+  background-color: rgba(255, 255, 255, 0.85); 
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 2;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: calc(100% - 40px);
+}
+
+
+
+/* Menu Container */
+.menu-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Menu Category Title */
+.menu-category h2 {
+  font-size: 2.8rem;
+  text-align: center;
+  margin: 30px 0;
+  color: #333333;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Subcategories */
+.subcategory-tabs {
+  text-align: center;
   margin-bottom: 30px;
 }
 
-.menu-category h2 {
-  font-size: 24px;
-  border-bottom: 2px solid #333;
-  display: inline-block;
-  margin-bottom: 10px;
-  cursor: pointer;
+.subcategory-tabs button {
+  background-color: transparent;
+  border: none;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 15px;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
-.menu-category h3 {
-  font-size: 20px;
-  color: #555;
-  margin-top: 20px;
-  margin-bottom: 5px;
+.subcategory-tabs button:hover,
+.subcategory-tabs button.active {
+  border-bottom: 2px solid #004c70;
+  padding-bottom: 3px;
 }
 
-.menu-items {
-  padding-left: 20px;
-}
-
+/* Menu Items */
 .menu-item {
-  border-bottom: 1px dotted #aaa;
   padding: 10px 0;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .menu-item:last-child {
   border-bottom: none;
 }
 
-.subcategory-tabs button {
-  background-color: #f8f8f8;
-  border: 1px solid #ddd;
-  padding: 5px 10px;
-  margin-right: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.subcategory-tabs button.active {
-  background-color: #ddd;
-  font-weight: bold;
-}
-
 .menu-item-name {
-  font-weight: bold;
-}
-
-.menu-item-description {
-  color: #666;
+  font-size: 1.5rem;
+  color: #333;
 }
 
 .menu-item-price {
   float: right;
-  font-weight: bold;
+  font-size: 1.5rem;
+  color: #333;
 }
 
-/* Vegan and gluten-free options label styling */
-.menu-item .vegan-option,
-.menu-item .gluten-free-option {
-  font-style: italic;
-  font-size: smaller;
-  color: #888;
+.menu-item-description {
+  font-size: 1rem;
+  color: #555;
+  margin: 5px 0 10px;
 }
 
-/* Additional responsive styles for smaller screens */
-@media (max-width: 900px) {
+/* Reset Floats */
+.menu-item:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
   .menu-container {
     padding: 10px;
   }
+
   .menu-category h2 {
-    font-size: 22px;
+    font-size: 2rem;
+  }
+
+  .menu-item-name, .menu-item-price {
+    font-size: 1.3rem;
   }
 }
-
-/* Styling for items that have vegan or gluten-free options */
-.menu-item .vegan-option::before,
-.menu-item .gluten-free-option::before {
-  content: '•';
-  padding-right: 5px;
-}
-
