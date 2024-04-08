@@ -1,0 +1,37 @@
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px dotted #aaa;
+  padding: 10px 0;
+}
+
+.menu-item-name {
+  font-weight: bold;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+.menu-item-details {
+  flex-grow: 2;
+}
+
+.menu-item-price {
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.menu-item-details p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.menu-item-vineyard,
+.menu-item-region {
+  font-style: italic;
+}
+
+.menu-item-tasting-notes {
+  color: #888;
+  font-size: smaller;
+}
