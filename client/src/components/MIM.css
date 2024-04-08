@@ -1,0 +1,87 @@
+.menu-container {
+    margin: 20px;
+  }
+
+  .menu-heading {
+    font-weight: bold; /* Make the heading bold */
+    font-size: 28px; /* Increase font size */
+  }
+  
+  .add-button {
+    margin-bottom: 10px;
+    padding: 8px 16px; /* Increase padding for larger size */
+    background-color: #0274ed; /* Add background color */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px; /* Increase font size */
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3; /* Darker shade of blue on hover */
+  }
+  
+  .menu-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .menu-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #d8e9f7; /* Light blue background */
+  }
+  
+  .item-name {
+    font-weight: bold;
+  }
+  
+  .item-description {
+    font-style: italic;
+  }
+  
+  .item-price {
+    font-weight: bold;
+    color: green;
+  }
+  
+  .item-category {
+    margin-left: 10px;
+    font-style: italic;
+  }
+  
+  .item-field {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #555;
+  }
+  
+  .edit-button,
+  .delete-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .edit-button:hover,
+  .delete-button:hover {
+    background-color: #0056b3;
+  }
+
+  .delete-button {
+    margin-left: 10px;
+    cursor: pointer;
+    background-color: red; /* Change background color to red */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff0000; /* Darker shade of red on hover */
+  }

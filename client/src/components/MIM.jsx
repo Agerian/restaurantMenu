@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
-import RemoveProfile from './RemoveProfile';
 import MenuItemModal from './MenuItemModal';
 import { GET_ALL_MENU_ITEMS } from '../utils/queries';
 import { ADD_MENU_ITEM, UPDATE_MENU_ITEM, DELETE_MENU_ITEM } from '../utils/mutations';
+import './MIM.css'; // Import CSS file for styling
 
 function MIM() {
   const { loading, error, data, refetch } = useQuery(GET_ALL_MENU_ITEMS);
@@ -31,24 +31,26 @@ function MIM() {
   if (error) return <p>Error loading menu items!</p>;
 
   return (
-    <div>
-      <h2>Menu Item Management</h2>
-      <button onClick={() => handleOpenModal(null)}>Add New Menu Item</button>
+    <div className="menu-container">
+      <h2 className="menu-heading">Menu Item Management</h2>
+      <button className="add-button" onClick={() => handleOpenModal(null)}>Add New Menu Item</button>
       
-      <ul>
-  {data.getAllMenuItems.map((item) => (
-    <li key={item._id}>
-      {item.name} - {item.description} - ${item.price} - 
-      {item.category && item.category.name} {/* Adjusted this line */}
-      {/* Conditionally render the new fields if they exist */}
-      {item.vineyard && <div>Vineyard: {item.vineyard}</div>}
-      {item.region && <div>Region: {item.region}</div>}
-      {item.tastingNotes && <div>Tasting Notes: {item.tastingNotes}</div>}
-      <button onClick={() => handleOpenModal(item)}>Edit</button>
-      <button onClick={() => handleDeleteMenuItem(item._id)}>Delete</button>
-    </li>
-  ))}
-</ul>
+      <ul className="menu-list">
+        {data.getAllMenuItems.map((item) => (
+          <li key={item._id} className="menu-item">
+            <div>
+              <span className="item-name">{item.name}</span> - <span className="item-description">{item.description}</span> - <span className="item-price">${item.price}</span> - 
+              {item.category && <span className="item-category">{item.category.name}</span>} {/* Adjusted this line */}
+              {/* Conditionally render the new fields if they exist */}
+              {item.vineyard && <div className="item-field">Vineyard: {item.vineyard}</div>}
+              {item.region && <div className="item-field">Region: {item.region}</div>}
+              {item.tastingNotes && <div className="item-field">Tasting Notes: {item.tastingNotes}</div>}
+            </div>
+            <button className="edit-button" onClick={() => handleOpenModal(item)}>Edit</button>
+            <button className="delete-button" onClick={() => handleDeleteMenuItem(item._id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
       
       {modalOpen && (
         <MenuItemModal
