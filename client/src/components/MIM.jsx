@@ -31,23 +31,23 @@ function MIM() {
   if (error) return <p>Error loading menu items!</p>;
 
   return (
-    <div className="menu-container">
-      <h2 className="menu-heading">Menu Item Management</h2>
-      <button className="add-button" onClick={() => handleOpenModal(null)}>Add New Menu Item</button>
+    <div className="menu-container1">
+      <h2 className="menu-heading1">Menu Item Management</h2>
+      <button className="add-button1" onClick={() => handleOpenModal(null)}>Add New Menu Item</button>
       
-      <ul className="menu-list">
+      <ul className="menu-list1">
         {data.getAllMenuItems.map((item) => (
-          <li key={item._id} className="menu-item">
+          <li key={item._id} className="menu-item1">
             <div>
-              <span className="item-name">{item.name}</span> - <span className="item-description">{item.description}</span> - <span className="item-price">${item.price}</span> - 
-              {item.category && <span className="item-category">{item.category.name}</span>} {/* Adjusted this line */}
+              <span className="item-name1">{item.name}</span> - <span className="item-description">{item.description}</span> - <span className="item-price">${item.price}</span> - 
+              {item.category && <span className="item-category1">{item.category.name}</span>} {/* Adjusted this line */}
               {/* Conditionally render the new fields if they exist */}
-              {item.vineyard && <div className="item-field">Vineyard: {item.vineyard}</div>}
-              {item.region && <div className="item-field">Region: {item.region}</div>}
-              {item.tastingNotes && <div className="item-field">Tasting Notes: {item.tastingNotes}</div>}
+              {item.vineyard && <div className="item-field1">Vineyard: {item.vineyard}</div>}
+              {item.region && <div className="item-field1">Region: {item.region}</div>}
+              {item.tastingNotes && <div className="item-field1">Tasting Notes: {item.tastingNotes}</div>}
             </div>
-            <button className="edit-button" onClick={() => handleOpenModal(item)}>Edit</button>
-            <button className="delete-button" onClick={() => handleDeleteMenuItem(item._id)}>Delete</button>
+            <button className="edit-button1" onClick={() => handleOpenModal(item)}>Edit</button>
+            <button className="delete-button1" onClick={() => handleDeleteMenuItem(item._id)}>Delete</button>
           </li>
         ))}
       </ul>
