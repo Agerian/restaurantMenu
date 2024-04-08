@@ -3,25 +3,25 @@
   }
   
   .manage-heading {
-    font-weight: bold; /* Make the heading bold */
-    font-size: 28px; /* Increase font size */
+    font-weight: bold; 
+    font-size: 28px; 
   }
 
   .add-button {
     margin-bottom: 10px;
-    padding: 8px 16px; /* Increase padding for larger size */
-    background-color: #0274ed; /* Add background color */
+    padding: 8px 16px; 
+    background-color: #0274ed; 
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 16px; /* Increase font size */
+    font-size: 16px; 
   }
 
   .category-item {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    background-color: #fde7ff; /* Light blue background */
+    background-color: #fde7ff; 
   }
   
   .category-item input[type="text"] {
@@ -46,12 +46,12 @@
   .category-item button.delete-button {
     margin-left: 10px;
     cursor: pointer;
-    background-color: rgb(235, 86, 86); /* Change background color to red */
+    background-color: rgb(235, 86, 86); 
     color: #fff;
     border: none;
     border-radius: 5px;
   }
 
   .category-item button.delete-button:hover {
-    background-color: #ff0000; /* Darker shade of red on hover */
+    background-color: #ff0000; 
   }

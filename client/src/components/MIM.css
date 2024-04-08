@@ -3,22 +3,23 @@
   }
 
   .menu-heading1 {
-    font-weight: bold; /* Make the heading bold */
-    font-size: 28px; /* Increase font size */
+    font-weight: bold; 
+    font-size: 28px; 
   }
   
   .add-button1 {
     margin-bottom: 10px;
-    padding: 8px 16px; /* Increase padding for larger size */
-    background-color: #0274ed; /* Add background color */
+    padding: 8px 16px; 
+    background-color: #0274ed; 
     color: #fff;
     border: none;
     border-radius: 5px;
-    font-size: 16px; /* Increase font size */
+    font-size: 16px; 
+    cursor: pointer;
   }
   
   .add-button:hover {
-    background-color: #0056b3; /* Darker shade of blue on hover */
+    background-color: #0056b3; 
   }
   
   .menu-list1 {
@@ -30,7 +31,7 @@
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
-    background-color: #d8e9f7; /* Light blue background */
+    background-color: #d8e9f7; 
   }
   
   .item-name1 {
@@ -76,12 +77,12 @@
   .delete-button1 {
     margin-left: 10px;
     cursor: pointer;
-    background-color: red; /* Change background color to red */
+    background-color: red; 
     color: #fff;
     border: none;
     border-radius: 5px;
   }
   
   .delete-button1:hover {
-    background-color: #ff0000; /* Darker shade of red on hover */
+    background-color: #ff0000; 
   }

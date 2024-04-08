@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_CATEGORIES } from '../utils/queries';
 import { ADD_CATEGORY, UPDATE_CATEGORY, DELETE_CATEGORY } from '../utils/mutations';
-import './CategoryManagement.css'; // Import CSS file for styling
+import './CategoryManagement.css';
 
 const CategoryManagement = () => {
     const { loading, error, data, refetch } = useQuery(GET_CATEGORIES);
