@@ -2,6 +2,7 @@ import React from 'react';
 import ImageGrid from '../../components/ImageGrid';
 
 const aboutImages = [
+  /*
   { src: "/images/AboutUs/PiedmontFamilySolo (14).jpg", alt: "Restaurant ambiance", className: "grid-item large" },
   { src: "/images/AboutUs/PiedmontFamily.png", alt: "Restaurant ambiance", className: "grid-item large" },
   { src: "/images/AboutUs/PiedmontFamilySolo5.jpg", alt: "Restaurant ambiance", className: "grid-item large" },
@@ -28,6 +29,33 @@ const aboutImages = [
   { src: "/images/AboutUs/PiedmontFamilySolo (16).png", alt: "Restaurant ambiance", className: "grid-item" },
   { src: "/images/AboutUs/PiedmontFamilySolo (3).jpg", alt: "Restaurant ambiance", className: "grid-item" },
   { src: "/images/AboutUs/PiedmontFamilySolo (2).jpg", alt: "Restaurant ambiance", className: "grid-item" },
+  */
+  { src: "/images/AboutUs/PiedmontFamilySolo (14).webp", alt: "Restaurant ambiance", className: "grid-item large" },
+  { src: "/images/AboutUs/PiedmontFamily (1).webp", alt: "Restaurant ambiance", className: "grid-item large" },
+  { src: "/images/AboutUs/PiedmontFamilySolo5.webp", alt: "Restaurant ambiance", className: "grid-item large" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (13).webp", alt: "Restaurant ambiance", className: "grid-item large" },
+  { src: "/images/AboutUs/PiedmontFamily (5).webp", alt: "Restaurant ambiance", className: "grid-item large" },
+ 
+  { src: "/images/AboutUs/PiedmontFamily (8).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamily (7).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamily (6).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamily (4).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamily (3).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamily (2).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamily.webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (15).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (12).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (11).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (10).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (9).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (8).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (7).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySoloWine.webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (6).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo3.webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (16).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (3).webp", alt: "Restaurant ambiance", className: "grid-item" },
+  { src: "/images/AboutUs/PiedmontFamilySolo (2).webp", alt: "Restaurant ambiance", className: "grid-item" },
 ];
 
 const AboutUs = () => {
