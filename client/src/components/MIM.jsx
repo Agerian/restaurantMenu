@@ -20,7 +20,7 @@ function MIM() {
 
   const handleCloseModal = () => {
     setModalOpen(false);
-    setCurrentItem(null); // Reset current item on close
+    setCurrentItem(null); // Reset currentItem to null
   };
 
   const handleDeleteMenuItem = async (itemId) => {

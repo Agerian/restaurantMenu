@@ -1,55 +1,51 @@
-/* Form container */
+
 .modal {
   width: 400px;
-  margin: 20px auto; /* Adjust margin */
+  margin: 20px auto; 
   padding: 20px;
-  background-color: #f5e6ff; /* Light purple background */
+  background-color: #f5e6ff; 
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Form input fields */
 .modal input[type="text"],
 .modal input[type="number"],
 .modal select {
-  width: calc(100% - 20px); /* Adjust width */
+  width: calc(100% - 20px); 
   margin-bottom: 10px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
-  color: #333; /* Darker text color */
+  color: #333; 
 }
 
-/* Error message */
+
 .modal .error {
   color: red;
   margin-top: 5px;
 }
-
-/* Buttons */
 .modal button {
   width: 100%;
   padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  color: #fff; /* Text color for buttons */
+  color: #fff; 
 }
 
-/* Submit button */
+
 .modal button[type="submit"] {
-  background-color: #7b68ee; /* Purple button color */
+  background-color: #7b68ee; 
 }
 
-/* Cancel button */
+
 .modal button[type="button"] {
   background-color: #ccc;
   color: #333;
   margin-top: 10px;
 }
 
-/* Button hover effect */
 .modal button:hover {
   opacity: 0.8;
 }

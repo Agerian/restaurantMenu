@@ -7,7 +7,6 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
     Query: {
 
-        //get all menu items by enum or category
         getAllMenuItems: async () => {
             try {
               const menuItems = await MenuItem.find({}).populate('category');
@@ -101,17 +100,17 @@ const resolvers = {
           removeProfile: async (parent, { username }) => {
             return Profile.findOneAndDelete({ username });
         },
-        // Add a category
+        
         addCategory: async (_, { name }) => {
             return Category.create({ name });
         },
 
-        // Update a category
+       
         updateCategory: async (_, { _id, name }) => {
             return Category.findByIdAndUpdate(_id, { name }, { new: true });
         },
 
-        // Delete a category
+       
         deleteCategory: async (_, { _id }) => {
             await Category.findByIdAndDelete(_id);
             return "Category deleted successfully.";
