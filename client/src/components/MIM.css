@@ -1,13 +1,13 @@
-.menu-container {
+.menu-container1 {
     margin: 20px;
   }
 
-  .menu-heading {
+  .menu-heading1 {
     font-weight: bold; /* Make the heading bold */
     font-size: 28px; /* Increase font size */
   }
   
-  .add-button {
+  .add-button1 {
     margin-bottom: 10px;
     padding: 8px 16px; /* Increase padding for larger size */
     background-color: #0274ed; /* Add background color */
@@ -21,19 +21,19 @@
     background-color: #0056b3; /* Darker shade of blue on hover */
   }
   
-  .menu-list {
+  .menu-list1 {
     list-style: none;
     padding: 0;
   }
   
-  .menu-item {
+  .menu-item1 {
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #d8e9f7; /* Light blue background */
   }
   
-  .item-name {
+  .item-name1 {
     font-weight: bold;
   }
   
@@ -46,19 +46,19 @@
     color: green;
   }
   
-  .item-category {
+  .item-category1 {
     margin-left: 10px;
     font-style: italic;
   }
   
-  .item-field {
+  .item-field1 {
     margin-top: 5px;
     font-size: 0.9em;
     color: #555;
   }
   
-  .edit-button,
-  .delete-button {
+  .edit-button1,
+  .delete-button1 {
     margin-left: 10px;
     padding: 5px 10px;
     cursor: pointer;
@@ -68,12 +68,12 @@
     border-radius: 5px;
   }
   
-  .edit-button:hover,
-  .delete-button:hover {
+  .edit-button1:hover,
+  .delete-button1:hover {
     background-color: #0056b3;
   }
 
-  .delete-button {
+  .delete-button1 {
     margin-left: 10px;
     cursor: pointer;
     background-color: red; /* Change background color to red */
@@ -82,6 +82,6 @@
     border-radius: 5px;
   }
   
-  .delete-button:hover {
+  .delete-button1:hover {
     background-color: #ff0000; /* Darker shade of red on hover */
   }
