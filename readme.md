@@ -77,6 +77,6 @@ AdrianO
  - Email: ezereading@gmail.com
 
 JoshD
- - Github: [@JoshD]()
-  - Email:
+ - Github: [@JoshD](https://github.com/spatiallyabsent)
+  - Email: Joshuapdow@gmail.com
 
