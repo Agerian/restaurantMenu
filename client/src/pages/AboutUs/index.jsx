@@ -1,6 +1,6 @@
 import React from 'react';
 import ImageGrid from '../../components/ImageGrid';
-import './AboutUs.css';
+//import './AboutUs.css';
 
 const aboutImages = [
   /*
